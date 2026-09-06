@@ -61,19 +61,6 @@ def _get_user_height():
     return user_height
 
 
-def _get_last_check():
-    print(
-        f"{user_name}, перед началом расчетов давайте подтвердим данные."
-        f"\nВаш возраст - {user_age} лет"
-        f"\nВаш вес = {user_weight} кг."
-        f"\nВаш рост = {user_height} м."
-        "\nЕсли данные верны, то введите 'Да', если нет введите 'Нет' и у вас "
-        "будет возможность ввести показатели еще раз.",
-        sep="",
-    )
-    return input()
-
-
 print(
     "Приветствую! Я - бот, который поможет Вам рассчитать индекс массы тела"
     "и рекомендуемую норму воды в день.\n"
@@ -88,18 +75,9 @@ print("\nРад знакомству, ", user_name, "!", sep="", flush=True)
 user_age = _get_user_age()
 user_weight = _get_user_weight()
 user_height = _get_user_height()
-last_check = _get_last_check()
 
-while True:
-    if last_check.lower() == "да":
-        bmi = _calc_bmi(user_weight, user_height)
-        water_volume = _calc_water_volume(user_weight)
-        break
-    else:
-        user_age = _get_user_age()
-        user_weight = _get_user_weight()
-        user_height = _get_user_height()
-        last_check = _get_last_check()
+bmi = _calc_bmi(user_weight, user_height)
+water_volume = _calc_water_volume(user_weight)
 
 print(
     f"\nОтчет для пользователя: {user_name} ({user_age})"
